@@ -1,20 +1,54 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/welcome.gd" type="Script" id=1]
 [ext_resource path="res://textures/bgarmor_logo_name.png" type="Texture" id=2]
+[ext_resource path="res://roboto_medium.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.12549, 0.12549, 0.141176, 1 )
+border_color = Color( 1, 1, 1, 1 )
+shadow_size = 12
+anti_aliasing = false
+
+[sub_resource type="Theme" id=8]
+WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
+WindowDialog/styles/panel = SubResource( 9 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0352941, 0.0313726, 0.0823529, 1 )
+border_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+corner_radius_bottom_right = 45
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
+
+[sub_resource type="Theme" id=5]
+Button/styles/focus = SubResource( 4 )
+Button/styles/hover = SubResource( 6 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 7 )
 
 [node name="Welcome" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = SubResource( 8 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 margin_right = 83.0
 margin_bottom = 58.0
+theme = SubResource( 8 )
 popup_exclusive = true
+window_title = "Alerta!"
 
 [node name="FileDialogNew" type="FileDialog" parent="."]
 anchor_left = 0.45
@@ -26,12 +60,11 @@ margin_top = -69.0
 margin_right = 247.5
 margin_bottom = 69.0
 rect_min_size = Vector2( 150, 52.5 )
+theme = SubResource( 8 )
 popup_exclusive = true
 window_title = "Create Project"
 resizable = true
 access = 2
-current_dir = "/GitHub/bgarmor"
-current_path = "/GitHub/bgarmor/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -46,13 +79,12 @@ margin_top = -69.0
 margin_right = 247.5
 margin_bottom = 69.0
 rect_min_size = Vector2( 150, 52.5 )
+theme = SubResource( 8 )
 popup_exclusive = true
-window_title = "Open a Directory"
+window_title = "Abrir um Diretório"
 resizable = true
 mode = 2
 access = 2
-current_dir = "/GitHub/bgarmor"
-current_path = "/GitHub/bgarmor/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -60,9 +92,7 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 anchor_right = 1.0
@@ -73,9 +103,6 @@ margin_right = -10.0
 margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRectLogo" type="TextureRect" parent="Panel/VBoxContainer"]
 margin_right = 780.0
@@ -100,46 +127,70 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainerL" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
-margin_right = 388.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+margin_right = 404.0
 margin_bottom = 237.0
+rect_min_size = Vector2( 10, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelProject" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainerL"]
-margin_right = 388.0
-margin_bottom = 14.0
+[node name="LabelProject" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 404.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 2 )
 text = "Project:"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonNew" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainerL"]
-margin_top = 18.0
-margin_right = 388.0
-margin_bottom = 38.0
+[node name="Hbox_NewProject" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 404.0
+margin_bottom = 105.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonNew" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject"]
+margin_right = 200.0
+margin_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 200, 50 )
+size_flags_horizontal = 3
+theme = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "New Project"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonOpen" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainerL"]
-margin_top = 42.0
-margin_right = 388.0
-margin_bottom = 62.0
+[node name="ButtonOpen" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 200, 50 )
+size_flags_horizontal = 3
+theme = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Open Project"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelLinks" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainerL"]
-margin_top = 66.0
-margin_right = 388.0
-margin_bottom = 97.0
+[node name="LabelLinks" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 109.0
+margin_right = 404.0
+margin_bottom = 150.0
+custom_fonts/font = SubResource( 2 )
 text = "
 Links:"
 align = 1
@@ -147,26 +198,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonDocs" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainerL"]
-margin_top = 101.0
-margin_right = 388.0
-margin_bottom = 121.0
-text = "Documentation"
+[node name="Hbox_OpenProject" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 154.0
+margin_right = 404.0
+margin_bottom = 237.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonSource" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainerL"]
-margin_top = 125.0
-margin_right = 388.0
-margin_bottom = 145.0
+[node name="ButtonDocs" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject"]
+margin_right = 200.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 200, 50 )
+rect_pivot_offset = Vector2( 1078, 306 )
+size_flags_horizontal = 3
+theme = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Docs"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSource" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 200, 50 )
+rect_pivot_offset = Vector2( 874, 306 )
+size_flags_horizontal = 3
+theme = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Source Code"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainerRecent" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
-margin_left = 392.0
+margin_left = 408.0
 margin_right = 780.0
 margin_bottom = 237.0
 size_flags_horizontal = 3
@@ -176,8 +248,9 @@ __meta__ = {
 }
 
 [node name="LabelRecent" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainerRecent"]
-margin_right = 388.0
-margin_bottom = 14.0
+margin_right = 372.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 2 )
 text = "Recent:"
 align = 1
 __meta__ = {
@@ -185,9 +258,13 @@ __meta__ = {
 }
 
 [node name="ButtonClearRecent" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainerRecent"]
-margin_top = 18.0
-margin_right = 388.0
-margin_bottom = 38.0
+margin_top = 23.0
+margin_right = 372.0
+margin_bottom = 42.0
+rect_pivot_offset = Vector2( 670, 437 )
+theme = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Clear list"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -196,8 +273,8 @@ __meta__ = {
 [connection signal="file_selected" from="FileDialogNew" to="." method="_on_FileDialogNew_file_selected"]
 [connection signal="dir_selected" from="FileDialogOpen" to="." method="_on_FileDialogOpen_dir_selected"]
 [connection signal="file_selected" from="FileDialogOpen" to="." method="_on_FileDialogOpen_file_selected"]
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainerL/ButtonNew" to="." method="_on_ButtonNew_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainerL/ButtonOpen" to="." method="_on_ButtonOpen_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainerL/ButtonDocs" to="." method="_on_ButtonDocs_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainerL/ButtonSource" to="." method="_on_ButtonSource_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject/ButtonNew" to="." method="_on_ButtonNew_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject/ButtonOpen" to="." method="_on_ButtonOpen_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject/ButtonDocs" to="." method="_on_ButtonDocs_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject/ButtonSource" to="." method="_on_ButtonSource_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainerRecent/ButtonClearRecent" to="." method="_on_ButtonClearRecent_pressed"]

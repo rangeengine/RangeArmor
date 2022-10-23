@@ -108,9 +108,9 @@ var BUTTON_FILE_DIALOG_RELATIONS = [
 	{
 		"node": "ButtonMainFile",
 		"field": "MainFile",
-		"filters": PoolStringArray(["*.blend ; Blend File"]),
+		"filters": PoolStringArray(["*.range ; RangeEngine File"]),
 		"mode": FileDialog.MODE_OPEN_FILE,
-		"title": "Select the game main blend file",
+		"title": "Select the game main range file",
 		"filename_only": true,
 	},
 	{

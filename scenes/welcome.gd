@@ -52,7 +52,7 @@ func _on_ButtonDocs_pressed() -> void:
 
 
 func _on_ButtonSource_pressed() -> void:
-	var _error = OS.shell_open("https://github.com/bgempire/bgarmor")
+	var _error = OS.shell_open("https://github.com/rangeengine/RangeArmor")
 
 
 func _on_ButtonClearRecent_pressed() -> void:

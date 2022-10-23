@@ -20,12 +20,12 @@ _global_script_class_icons={
 
 [application]
 
-config/name="BGArmor Panel"
+config/name="RANGEARMOR Panel"
 run/main_scene="res://scenes/welcome.tscn"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="BGArmor"
+config/custom_user_dir_name="RANGEARMOR"
 boot_splash/image="res://textures/bgarmor_logo.png"
-boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -42,13 +42,16 @@ window/size/height=450
 custom=false
 use_custom_dir=false
 app_version=111
+blend=false
 
 [physics]
 
 common/enable_pause_aware_picking=true
+3d/active_soft_world=false
 
 [rendering]
 
+quality/filters/sharpen_intensity=0.1
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
