@@ -29,7 +29,7 @@ def build(target):
     toolchain = "i686-pc-windows-gnu" if target == "windows" else "i686-unknown-linux-gnu"
     ext = ".exe" if target == "windows" else ""
     launcherSourcePath = (curDir / "source/launcher").absolute()
-    sourceExe = (curDir / "source/launcher/target/{toolchain}/release/bgarmor{ext}".format(toolchain=toolchain, ext=ext)).absolute()
+    sourceExe = (curDir / "source/launcher/target/{toolchain}/release/rangearmor{ext}".format(toolchain=toolchain, ext=ext)).absolute()
     targetExe = (curDir / ("release/launcher/Launcher" + ext)).absolute()
     
     print("> Started build for target:", toolchain)

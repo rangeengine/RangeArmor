@@ -6,10 +6,10 @@ use json;
 use subprocess::*;
 
 fn main() {
-    let matches = App::new("BGArmor Launcher")
+    let matches = App::new("RangeEngine Launcher")
         .version("0.1.0")
-        .author("Joel Gomes da Silva <joelgomes1994@hotmail.com>")
-        .about("BGE and UPBGE source code obfuscator and launcher toolchain.")
+        .author("Range Engine")
+        .about("RangeEngine source code obfuscator and launcher toolchain.")
         .arg(Arg::with_name("console")
             .short("c")
             .long("console")

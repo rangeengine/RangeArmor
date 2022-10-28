@@ -1,5 +1,5 @@
 [package]
-name = "bgarmor"
+name = "rangearmor"
 version = "0.1.1"
 edition = "2018"
 build = "build.rs"
@@ -14,8 +14,8 @@ winapi = {version = "0.3.9", features = ["wincon", "winuser"]}
 winres = "0.1.12"
 
 [package.metadata.winres]
-FileDescription = "BGArmor: BGE and UPBGE game packer and launcher."
-ProductName = "BGArmor"
-OriginalFilename = "BGArmor.exe"
+FileDescription = "RangeArmor: Game packer and launcher."
+ProductName = "RangeArmor"
+OriginalFilename = "RangeArmor.exe"
 LegalCopyright = "MIT"
-CompanyName = "BGEmpire"
+CompanyName = "RangeEngine"
