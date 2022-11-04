@@ -50,7 +50,7 @@ def main():
             command = PLAT_QUOTE + enginePath.as_posix() + PLAT_QUOTE + console + extraArgs + " " + PLAT_QUOTE + config["MainFile"] + PLAT_QUOTE
             os.chdir(tempDir.as_posix())
             debugMsg("> Launch game in blenderplayer")
-            subprocess.call(command, shell=True)
+            subprocess.call(command, shell=False)
             showConsoleWindow(False)
             sleep(0.2)
 
@@ -203,7 +203,7 @@ def getTempDir(config):
     from hashlib import md5
 
     tempDir = Path.home()
-    tempDirName = md5(("BGArmor" + str(time())).encode()).hexdigest().upper()
+    tempDirName = md5(("RangeArmor" + str(time())).encode()).hexdigest().upper()
 
     if sys.platform == "win32":
         tempDir = Path(os.environ.get("TEMP")) / tempDirName
