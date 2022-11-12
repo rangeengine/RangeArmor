@@ -50,7 +50,8 @@ def main():
             command = PLAT_QUOTE + enginePath.as_posix() + PLAT_QUOTE + console + extraArgs + " " + PLAT_QUOTE + config["MainFile"] + PLAT_QUOTE
             os.chdir(tempDir.as_posix())
             debugMsg("> Launch game in blenderplayer")
-            subprocess.call(command, shell=False)
+            if platform.system() == "Windows": subprocess.call(command, shell=False)
+            else: subprocess.call(command, shell=True)
             showConsoleWindow(False)
             sleep(0.2)
 

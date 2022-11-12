@@ -91,18 +91,14 @@ anchor_bottom = 1.0
 script = ExtResource( 3 )
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
-margin_right = 83.0
-margin_bottom = 58.0
+margin_right = 173.0
+margin_bottom = 129.0
 theme = SubResource( 12 )
 popup_exclusive = true
 window_title = "Alerta!"
 resizable = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextEdit" type="TextEdit" parent="AcceptDialog"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
