@@ -17,7 +17,7 @@ WindowDialog/styles/panel = SubResource( 9 )
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.054902, 0.054902, 0.054902, 1 )
 border_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
-corner_radius_bottom_right = 45
+corner_radius_bottom_right = 30
 
 [sub_resource type="DynamicFont" id=15]
 font_data = ExtResource( 3 )
@@ -112,7 +112,7 @@ size_flags_vertical = 3
 
 [node name="TextureRectLogo" type="TextureRect" parent="Panel/VBoxContainer"]
 margin_right = 780.0
-margin_bottom = 189.0
+margin_bottom = 179.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.8
@@ -124,9 +124,9 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_top = 193.0
+margin_top = 183.0
 margin_right = 780.0
-margin_bottom = 430.0
+margin_bottom = 407.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -135,7 +135,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
 margin_right = 404.0
-margin_bottom = 237.0
+margin_bottom = 224.0
 rect_min_size = Vector2( 10, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -156,7 +156,7 @@ __meta__ = {
 [node name="Hbox_NewProject" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 23.0
 margin_right = 404.0
-margin_bottom = 105.0
+margin_bottom = 99.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -165,7 +165,7 @@ __meta__ = {
 
 [node name="ButtonNew" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject"]
 margin_right = 200.0
-margin_bottom = 82.0
+margin_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 200, 50 )
@@ -181,7 +181,7 @@ __meta__ = {
 [node name="ButtonOpen" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject"]
 margin_left = 204.0
 margin_right = 404.0
-margin_bottom = 82.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 200, 50 )
 size_flags_horizontal = 3
 theme = SubResource( 5 )
@@ -193,9 +193,9 @@ __meta__ = {
 }
 
 [node name="LabelLinks" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 109.0
+margin_top = 103.0
 margin_right = 404.0
-margin_bottom = 150.0
+margin_bottom = 144.0
 custom_fonts/font = SubResource( 15 )
 text = "
 Links:"
@@ -205,9 +205,9 @@ __meta__ = {
 }
 
 [node name="Hbox_OpenProject" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 154.0
+margin_top = 148.0
 margin_right = 404.0
-margin_bottom = 237.0
+margin_bottom = 224.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -216,7 +216,7 @@ __meta__ = {
 
 [node name="ButtonDocs" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject"]
 margin_right = 200.0
-margin_bottom = 83.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 200, 50 )
 rect_pivot_offset = Vector2( 1078, 306 )
 size_flags_horizontal = 3
@@ -231,7 +231,7 @@ __meta__ = {
 [node name="ButtonSource" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject"]
 margin_left = 204.0
 margin_right = 404.0
-margin_bottom = 83.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 200, 50 )
 rect_pivot_offset = Vector2( 874, 306 )
 size_flags_horizontal = 3
@@ -246,7 +246,7 @@ __meta__ = {
 [node name="VBoxContainerRecent" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
 margin_left = 408.0
 margin_right = 780.0
-margin_bottom = 237.0
+margin_bottom = 224.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -275,6 +275,15 @@ text = "Clear list"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ProjectVersion" type="Label" parent="Panel/VBoxContainer"]
+light_mask = 2
+margin_top = 411.0
+margin_right = 780.0
+margin_bottom = 430.0
+custom_fonts/font = SubResource( 15 )
+text = "v0.1.5"
+align = 2
 
 [connection signal="file_selected" from="FileDialogNew" to="." method="_on_FileDialogNew_file_selected"]
 [connection signal="dir_selected" from="FileDialogOpen" to="." method="_on_FileDialogOpen_dir_selected"]
