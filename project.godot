@@ -52,6 +52,5 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/filters/sharpen_intensity=0.1
-quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false

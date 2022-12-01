@@ -101,14 +101,14 @@ func _project_updated(data: Dictionary) -> bool:
 func _update_runtime_files(data: Dictionary):
 	var dir: Directory = Directory.new()
 	var cur_dir: String = globals.current_project_dir
-	var _error = dir.copy("res://release/launcher/launcher.py", cur_dir + "/launcher/launcher.py")
+	var _error = dir.copy(_get_pathfile(dir) + "launcher/launcher.py", cur_dir + "/launcher/launcher.py")
 	
 	if not _project_updated(data):
 		print("X Project outdated with current app version, updating runtime files...")
 		
 		for file in globals.DEFAULT_PROJECT_FILES:
 			if "/Launcher" in file:
-				_error = dir.copy("res://release/" + file, cur_dir + "/" + file)
+				_error = dir.copy(_get_pathfile(dir) + file, cur_dir + "/" + file)
 				print("  > Copied file: ", file)
 
 
@@ -124,7 +124,7 @@ func _create_new_project(path: String):
 	
 	for file in globals.DEFAULT_PROJECT_FILES:
 		var cur_folder = path + "/" + file
-		var _error = dir.copy("res://release/" + file, cur_folder)
+		var _error = dir.copy(_get_pathfile(dir) + file, cur_folder)
 		print("  Copied file: " + cur_folder)
 		
 	var _project_name: String = path.split("/")[-1].strip_edges()
@@ -138,6 +138,13 @@ func _create_new_project(path: String):
 	print("Created new project at: " + project_file_path)
 	_load_project(path)
 
+func _get_pathfile(dir: Directory):
+	# Try to fix rangearmor in range engine not copy files
+	var pathfile = "res://release/"
+	# print("Result = ", dir.file_exists("res://release/launcher/launcher.py"))
+	if not (dir.file_exists("res://release/launcher/launcher.py")):
+		pathfile = "res://rangearmor/release/"
+	return pathfile
 
 func _load_project(path: String):
 	var cur_dir = path
