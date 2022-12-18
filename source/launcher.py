@@ -309,8 +309,8 @@ def copyPersistentFiles(pathFrom, pathTo, filesList):
     # type: (Path, Path, list[Path]) -> None
 
     for fileFrom in filesList:
-        fileRelative = Path(fileFrom.as_posix().replace(pathFrom.as_posix(), "")[2:])
-        fileTo = (pathTo / fileRelative)
+        fileRelative = Path(fileFrom.as_posix().replace(pathFrom.as_posix(), "")[1:])
+        fileTo = (fileRelative / pathTo)
         shutil.copy2(fileFrom.as_posix(), ensurePath(fileTo).as_posix())
 
 
