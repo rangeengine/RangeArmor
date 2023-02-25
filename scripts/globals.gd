@@ -28,7 +28,7 @@ const DEFAULT_PROJECT_FOLDERS: PoolStringArray = PoolStringArray([
 ])
 
 const DEFAULT_PROJECT_FILES: PoolStringArray = PoolStringArray([
-	"data/Example Game.range",
+	"data/Example Game.rasec",
 	"icons/icon-engine.ico",
 	"icons/icon-launcher.ico",
 	"launcher/Launcher.exe",
@@ -38,9 +38,9 @@ const DEFAULT_PROJECT_FILES: PoolStringArray = PoolStringArray([
 
 const DEFAULT_FIELDS: Dictionary = {
 	"GameName": "Game",
-	"Version": "0.0.1",
+	"Version": "1.0.0",
 	"BGArmorVersion": 0,
-	"MainFile": "Example Game.range",
+	"MainFile": "Example Game.rasec",
 	"DataFile": "./data.dat",
 	"DataSource": "./data",
 	"DataChunkSize": 32,
@@ -60,7 +60,7 @@ const DEFAULT_FIELDS: Dictionary = {
 	],
 	"Ignore": [
 		"*.pyc",
-		"*.range1"
+		"*.range",
 	]
 }
 

@@ -368,9 +368,6 @@ anchor_bottom = 1.0
 margin_left = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="Panel/TabContainer/Project/HBoxContainer"]
 margin_right = 384.0
@@ -420,7 +417,7 @@ margin_top = 112.0
 margin_right = 384.0
 margin_bottom = 131.0
 custom_fonts/font = SubResource( 2 )
-text = "Main blend file:"
+text = "Main Rasec file:"
 align = 1
 
 [node name="ButtonMainFile" type="Button" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
@@ -429,7 +426,7 @@ margin_right = 384.0
 margin_bottom = 160.0
 hint_tooltip = "Blend file which the game should start from."
 custom_fonts/font = SubResource( 2 )
-text = "Example Game.blend"
+text = "Example Game.rasec"
 icon = ExtResource( 2 )
 align = 0
 expand_icon = true

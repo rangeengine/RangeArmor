@@ -15,7 +15,7 @@ WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
 WindowDialog/styles/panel = SubResource( 9 )
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.054902, 0.054902, 0.054902, 1 )
+bg_color = Color( 0, 0, 0, 1 )
 border_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
 corner_radius_bottom_right = 30
 
@@ -282,7 +282,7 @@ margin_top = 411.0
 margin_right = 780.0
 margin_bottom = 430.0
 custom_fonts/font = SubResource( 15 )
-text = "v0.2.0"
+text = "v1.0.0"
 align = 2
 
 [connection signal="file_selected" from="FileDialogNew" to="." method="_on_FileDialogNew_file_selected"]

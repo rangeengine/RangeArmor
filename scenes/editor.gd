@@ -108,9 +108,9 @@ var BUTTON_FILE_DIALOG_RELATIONS = [
 	{
 		"node": "ButtonMainFile",
 		"field": "MainFile",
-		"filters": PoolStringArray(["*.range ; RangeEngine File"]),
+		"filters": PoolStringArray(["*.rasec ; RangeArmorSecurity File"]),
 		"mode": FileDialog.MODE_OPEN_FILE,
-		"title": "Select the game main range file",
+		"title": "Select the game main rasec file",
 		"filename_only": true,
 	},
 	{
