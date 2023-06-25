@@ -1,8 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://roboto_medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://textures/icons/tile176.png" type="Texture" id=2]
 [ext_resource path="res://scenes/editor.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=19]
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
@@ -18,10 +21,13 @@ bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
 border_width_left = 2
 border_color = Color( 0.478431, 0.478431, 0.478431, 1 )
 corner_radius_bottom_right = 10
-shadow_size = 3
+shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.105882, 0.105882, 0.105882, 1 )
 
 [sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
@@ -33,19 +39,35 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=13]
 draw_center = false
-shadow_size = 10
+border_width_top = 2
+border_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 
-[sub_resource type="StyleBoxFlat" id=14]
-content_margin_left = 15.0
-content_margin_right = 15.0
-bg_color = Color( 0.14902, 0.14902, 0.14902, 1 )
+[sub_resource type="StyleBoxFlat" id=18]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+border_width_left = 2
+border_width_right = 2
+border_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_size = 10
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 0.14902, 0.14902, 0.14902, 1 )
+border_width_left = 2
+border_width_right = 2
+border_color = Color( 0.647059, 0.647059, 0.647059, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 2
+
+[sub_resource type="DynamicFont" id=20]
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=16]
@@ -54,22 +76,31 @@ expand_margin_top = 22.0
 shadow_size = 10
 
 [sub_resource type="Theme" id=12]
+Button/fonts/font = SubResource( 19 )
 Button/styles/disabled = SubResource( 6 )
 Button/styles/focus = SubResource( 4 )
 Button/styles/hover = SubResource( 6 )
 Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 7 )
+Label/fonts/font = SubResource( 19 )
+LineEdit/styles/normal = SubResource( 21 )
 Panel/styles/panel = SubResource( 10 )
 PanelContainer/styles/panel = SubResource( 10 )
 PopupDialog/styles/panel = SubResource( 17 )
 TabContainer/fonts/font = SubResource( 2 )
 TabContainer/styles/panel = SubResource( 13 )
+TabContainer/styles/tab_bg = SubResource( 18 )
 TabContainer/styles/tab_fg = SubResource( 14 )
+TextEdit/fonts/font = SubResource( 20 )
+TooltipLabel/colors/font_color = Color( 1, 0.4, 0.4, 1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+TooltipLabel/fonts/font = SubResource( 20 )
 WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
-WindowDialog/fonts/title_font = SubResource( 15 )
+WindowDialog/fonts/title_font = SubResource( 20 )
 WindowDialog/styles/panel = SubResource( 16 )
 
 [sub_resource type="Theme" id=5]
+Button/fonts/font = SubResource( 20 )
 Button/styles/focus = SubResource( 4 )
 Button/styles/hover = SubResource( 6 )
 Button/styles/normal = SubResource( 4 )
@@ -159,7 +190,6 @@ hint_tooltip = "Save project data."
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource( 5 )
-custom_fonts/font = SubResource( 2 )
 text = "Save"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -184,13 +214,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 40.0
 theme = SubResource( 12 )
-custom_fonts/font = SubResource( 2 )
 tab_align = 0
 
 [node name="Tasks" type="Tabs" parent="Panel/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 29.0
+margin_top = 31.0
 theme = SubResource( 8 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Tasks"]
@@ -207,6 +236,7 @@ text = "General tasks:"
 align = 1
 
 [node name="ButtonBuildData" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer"]
+visible = false
 margin_top = 23.0
 margin_right = 800.0
 margin_bottom = 48.0
@@ -214,6 +244,15 @@ hint_tooltip = "Build game package from source data to target file."
 theme = SubResource( 12 )
 custom_fonts/font = SubResource( 2 )
 text = "Build Data"
+
+[node name="ButtonGetRanGE" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer"]
+margin_top = 23.0
+margin_right = 800.0
+margin_bottom = 48.0
+hint_tooltip = "Copy all the necessary data from the game engine (current platform) to the project."
+theme = SubResource( 12 )
+custom_fonts/font = SubResource( 2 )
+text = "Copy Range Engine Files"
 
 [node name="ButtonSetIcons" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer"]
 margin_top = 52.0
@@ -227,7 +266,7 @@ text = "Set Icons"
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/TabContainer/Tasks/VBoxContainer"]
 margin_top = 81.0
 margin_right = 800.0
-margin_bottom = 381.0
+margin_bottom = 379.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -236,7 +275,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer"]
 margin_right = 398.0
-margin_bottom = 300.0
+margin_bottom = 298.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource( 12 )
@@ -257,7 +296,6 @@ margin_top = 45.0
 margin_right = 398.0
 margin_bottom = 70.0
 theme = SubResource( 12 )
-custom_fonts/font = SubResource( 2 )
 text = "Windows 32 bits"
 
 [node name="ButtonRunWindows64" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -265,10 +303,10 @@ margin_top = 74.0
 margin_right = 398.0
 margin_bottom = 99.0
 theme = SubResource( 12 )
-custom_fonts/font = SubResource( 2 )
 text = "Windows 64 bits"
 
 [node name="ButtonRunLinux32" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 margin_top = 103.0
 margin_right = 398.0
 margin_bottom = 128.0
@@ -277,17 +315,16 @@ custom_fonts/font = SubResource( 2 )
 text = "Linux 32 bits"
 
 [node name="ButtonRunLinux64" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 132.0
+margin_top = 103.0
 margin_right = 398.0
-margin_bottom = 157.0
+margin_bottom = 128.0
 theme = SubResource( 12 )
-custom_fonts/font = SubResource( 2 )
 text = "Linux 64 bits"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer"]
 margin_left = 402.0
 margin_right = 800.0
-margin_bottom = 300.0
+margin_bottom = 298.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource( 12 )
@@ -305,7 +342,6 @@ margin_top = 45.0
 margin_right = 398.0
 margin_bottom = 70.0
 theme = SubResource( 12 )
-custom_fonts/font = SubResource( 2 )
 text = "Windows 32 bits"
 
 [node name="ButtonExportWindows64" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer2"]
@@ -313,10 +349,10 @@ margin_top = 74.0
 margin_right = 398.0
 margin_bottom = 99.0
 theme = SubResource( 12 )
-custom_fonts/font = SubResource( 2 )
 text = "Windows 64 bits"
 
 [node name="ButtonExportLinux32" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer2"]
+visible = false
 margin_top = 103.0
 margin_right = 398.0
 margin_bottom = 128.0
@@ -325,29 +361,26 @@ custom_fonts/font = SubResource( 2 )
 text = "Linux 32 bits"
 
 [node name="ButtonExportLinux64" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 132.0
+margin_top = 103.0
 margin_right = 398.0
-margin_bottom = 157.0
+margin_bottom = 128.0
 theme = SubResource( 12 )
-custom_fonts/font = SubResource( 2 )
 text = "Linux 64 bits"
 
 [node name="ButtonExportAll" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 161.0
+margin_top = 132.0
 margin_right = 398.0
-margin_bottom = 186.0
+margin_bottom = 157.0
 hint_tooltip = "Exports to all available platforms."
 theme = SubResource( 12 )
-custom_fonts/font = SubResource( 2 )
 text = "All Platforms"
 
 [node name="CheckBoxExportCompress" type="CheckBox" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 190.0
+margin_top = 161.0
 margin_right = 398.0
-margin_bottom = 215.0
+margin_bottom = 186.0
 hint_tooltip = "Compress release folders as .zip after copied files."
 theme = SubResource( 12 )
-custom_fonts/font = SubResource( 2 )
 text = "Compress targets after export"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -358,9 +391,12 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 29.0
 margin_right = -4.0
 margin_bottom = -4.0
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/TabContainer/Project"]
 anchor_right = 1.0
@@ -370,23 +406,24 @@ margin_right = -10.0
 margin_bottom = -10.0
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="Panel/TabContainer/Project/HBoxContainer"]
-margin_right = 384.0
-margin_bottom = 364.0
+margin_right = 772.0
+margin_bottom = 367.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LabelGameName" type="Label" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
-margin_right = 384.0
+margin_right = 772.0
 margin_bottom = 19.0
-custom_fonts/font = SubResource( 2 )
+theme = SubResource( 12 )
 text = "Game name:"
 align = 1
 
 [node name="LineEditGameName" type="LineEdit" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
 margin_top = 23.0
-margin_right = 384.0
-margin_bottom = 52.0
+margin_right = 772.0
+margin_bottom = 42.0
 hint_tooltip = "Game name. Affects launcher and release target names."
+theme = SubResource( 12 )
 custom_fonts/font = SubResource( 2 )
 text = "Example Game"
 __meta__ = {
@@ -394,18 +431,19 @@ __meta__ = {
 }
 
 [node name="LabelVersion" type="Label" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
-margin_top = 56.0
-margin_right = 384.0
-margin_bottom = 75.0
-custom_fonts/font = SubResource( 2 )
+margin_top = 46.0
+margin_right = 772.0
+margin_bottom = 65.0
+theme = SubResource( 12 )
 text = "Version:"
 align = 1
 
 [node name="LineEditVersion" type="LineEdit" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
-margin_top = 79.0
-margin_right = 384.0
-margin_bottom = 108.0
+margin_top = 69.0
+margin_right = 772.0
+margin_bottom = 88.0
 hint_tooltip = "Game version. Affects release target name."
+theme = SubResource( 12 )
 custom_fonts/font = SubResource( 2 )
 text = "v0.0.1"
 __meta__ = {
@@ -413,17 +451,16 @@ __meta__ = {
 }
 
 [node name="LabelMainFile" type="Label" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
-margin_top = 112.0
-margin_right = 384.0
-margin_bottom = 131.0
-custom_fonts/font = SubResource( 2 )
+margin_top = 92.0
+margin_right = 772.0
+margin_bottom = 111.0
 text = "Main Rasec file:"
 align = 1
 
 [node name="ButtonMainFile" type="Button" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
-margin_top = 135.0
-margin_right = 384.0
-margin_bottom = 160.0
+margin_top = 115.0
+margin_right = 772.0
+margin_bottom = 140.0
 hint_tooltip = "Blend file which the game should start from."
 custom_fonts/font = SubResource( 2 )
 text = "Example Game.rasec"
@@ -432,17 +469,17 @@ align = 0
 expand_icon = true
 
 [node name="LabelDataSource" type="Label" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
-margin_top = 164.0
-margin_right = 384.0
-margin_bottom = 183.0
+margin_top = 144.0
+margin_right = 772.0
+margin_bottom = 163.0
 custom_fonts/font = SubResource( 2 )
-text = "Data source:"
+text = "Data source folder:"
 align = 1
 
 [node name="ButtonDataSource" type="Button" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
-margin_top = 187.0
-margin_right = 384.0
-margin_bottom = 212.0
+margin_top = 167.0
+margin_right = 772.0
+margin_bottom = 192.0
 hint_tooltip = "Game source directory. The main blend file should be contained in it."
 custom_fonts/font = SubResource( 2 )
 text = "./data"
@@ -451,6 +488,7 @@ align = 0
 expand_icon = true
 
 [node name="LabelDataFile" type="Label" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
+visible = false
 margin_top = 216.0
 margin_right = 384.0
 margin_bottom = 235.0
@@ -459,6 +497,7 @@ text = "Data target:"
 align = 1
 
 [node name="ButtonDataFile" type="Button" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
+visible = false
 margin_top = 239.0
 margin_right = 384.0
 margin_bottom = 264.0
@@ -470,17 +509,19 @@ align = 0
 expand_icon = true
 
 [node name="LabelCompressionLevel" type="Label" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
-margin_top = 268.0
-margin_right = 384.0
-margin_bottom = 287.0
+visible = false
+margin_top = 216.0
+margin_right = 772.0
+margin_bottom = 235.0
 custom_fonts/font = SubResource( 2 )
 text = "Compression level:"
 align = 1
 
 [node name="SpinBoxCompressionLevel" type="SpinBox" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
-margin_top = 291.0
-margin_right = 384.0
-margin_bottom = 315.0
+visible = false
+margin_top = 239.0
+margin_right = 772.0
+margin_bottom = 263.0
 hint_tooltip = "Data compression level of game package file. Lower values 
 give larger package size over fast decompression speed."
 max_value = 9.0
@@ -491,18 +532,19 @@ __meta__ = {
 }
 
 [node name="CheckBoxCompileScripts" type="CheckBox" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1"]
-margin_top = 319.0
-margin_right = 384.0
-margin_bottom = 344.0
+margin_top = 196.0
+margin_right = 772.0
+margin_bottom = 221.0
 hint_tooltip = "Compile all Python scripts to .pyc and replace 
 all .py by compiled files on release."
 custom_fonts/font = SubResource( 2 )
 text = "Compile Python scripts"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Panel/TabContainer/Project/HBoxContainer"]
+visible = false
 margin_left = 388.0
 margin_right = 772.0
-margin_bottom = 364.0
+margin_bottom = 367.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -542,15 +584,15 @@ align = 1
 [node name="ItemListPersistent" type="ItemList" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer3"]
 margin_top = 74.0
 margin_right = 384.0
-margin_bottom = 172.0
+margin_bottom = 174.0
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
 auto_height = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer3"]
-margin_top = 176.0
+margin_top = 178.0
 margin_right = 384.0
-margin_bottom = 205.0
+margin_bottom = 207.0
 
 [node name="LineEditPersistent" type="LineEdit" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer3/HBoxContainer2"]
 margin_right = 225.0
@@ -578,25 +620,25 @@ size_flags_horizontal = 3
 text = "Del"
 
 [node name="LabelIgnore" type="Label" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer3"]
-margin_top = 209.0
+margin_top = 211.0
 margin_right = 384.0
-margin_bottom = 228.0
+margin_bottom = 230.0
 custom_fonts/font = SubResource( 2 )
 text = "Ignore patterns:"
 align = 1
 
 [node name="ItemListIgnore" type="ItemList" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer3"]
-margin_top = 232.0
+margin_top = 234.0
 margin_right = 384.0
-margin_bottom = 331.0
+margin_bottom = 334.0
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
 auto_height = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer3"]
-margin_top = 335.0
+margin_top = 338.0
 margin_right = 384.0
-margin_bottom = 364.0
+margin_bottom = 367.0
 
 [node name="LineEditIgnore" type="LineEdit" parent="Panel/TabContainer/Project/HBoxContainer/VBoxContainer3/HBoxContainer"]
 margin_right = 225.0
@@ -629,7 +671,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 29.0
 margin_right = -4.0
 margin_bottom = -4.0
 
@@ -639,57 +681,60 @@ margin_left = 10.0
 margin_right = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Paths/HBoxContainer2"]
 margin_right = 384.0
-margin_bottom = 250.0
+margin_bottom = 241.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = SubResource( 12 )
 
 [node name="LabelEnginePaths" type="Label" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer"]
 margin_right = 384.0
-margin_bottom = 31.0
+margin_bottom = 41.0
 text = "Engine executable paths
 "
 align = 1
 
 [node name="LabelEngineWindows32" type="Label" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer"]
-margin_top = 35.0
+margin_top = 45.0
 margin_right = 384.0
-margin_bottom = 49.0
+margin_bottom = 64.0
+theme = SubResource( 12 )
 text = "Windows 32 bits:"
 align = 1
 
 [node name="ButtonEngineWindows32" type="Button" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer"]
-margin_top = 53.0
+margin_top = 68.0
 margin_right = 384.0
-margin_bottom = 73.0
+margin_bottom = 93.0
+theme = SubResource( 12 )
 text = "./engine/Windows32/blenderplayer.exe"
 icon = ExtResource( 2 )
 align = 0
 expand_icon = true
 
 [node name="LabelEngineWindows64" type="Label" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer"]
-margin_top = 77.0
+margin_top = 97.0
 margin_right = 384.0
-margin_bottom = 108.0
+margin_bottom = 138.0
+theme = SubResource( 12 )
 text = "
 Windows 64 bits:"
 align = 1
 
 [node name="ButtonEngineWindows64" type="Button" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer"]
-margin_top = 112.0
+margin_top = 142.0
 margin_right = 384.0
-margin_bottom = 132.0
+margin_bottom = 167.0
+theme = SubResource( 12 )
 text = "./engine/Windows64/blenderplayer.exe"
 icon = ExtResource( 2 )
 align = 0
 expand_icon = true
 
 [node name="LabelEngineLinux32" type="Label" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer"]
+visible = false
 margin_top = 136.0
 margin_right = 384.0
 margin_bottom = 167.0
@@ -698,6 +743,7 @@ Linux 32 bits:"
 align = 1
 
 [node name="ButtonEngineLinux32" type="Button" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer"]
+visible = false
 margin_top = 171.0
 margin_right = 384.0
 margin_bottom = 191.0
@@ -707,17 +753,19 @@ align = 0
 expand_icon = true
 
 [node name="LabelEngineLinux64" type="Label" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer"]
-margin_top = 195.0
+margin_top = 171.0
 margin_right = 384.0
-margin_bottom = 226.0
+margin_bottom = 212.0
+theme = SubResource( 12 )
 text = "
 Linux 64 bits:"
 align = 1
 
 [node name="ButtonEngineLinux64" type="Button" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer"]
-margin_top = 230.0
+margin_top = 216.0
 margin_right = 384.0
-margin_bottom = 250.0
+margin_bottom = 241.0
+theme = SubResource( 12 )
 text = "./engine/Linux64/blenderplayer"
 icon = ExtResource( 2 )
 align = 0
@@ -726,51 +774,53 @@ expand_icon = true
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/TabContainer/Paths/HBoxContainer2"]
 margin_left = 388.0
 margin_right = 772.0
-margin_bottom = 250.0
+margin_bottom = 241.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LabelPythonPaths" type="Label" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer2"]
 margin_right = 384.0
-margin_bottom = 31.0
+margin_bottom = 41.0
 text = "Python executable paths
 "
 align = 1
 
 [node name="LabelPythonWindows32" type="Label" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer2"]
-margin_top = 35.0
+margin_top = 45.0
 margin_right = 384.0
-margin_bottom = 49.0
+margin_bottom = 64.0
+theme = SubResource( 12 )
 text = "Windows 32 bits:"
 align = 1
 
 [node name="ButtonPythonWindows32" type="Button" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer2"]
-margin_top = 53.0
+margin_top = 68.0
 margin_right = 384.0
-margin_bottom = 73.0
+margin_bottom = 93.0
 text = "./engine/Windows32/2.79/python/bin/python.exe"
 icon = ExtResource( 2 )
 align = 0
 expand_icon = true
 
 [node name="LabelPythonWindows64" type="Label" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer2"]
-margin_top = 77.0
+margin_top = 97.0
 margin_right = 384.0
-margin_bottom = 108.0
+margin_bottom = 138.0
 text = "
 Windows 64 bits:"
 align = 1
 
 [node name="ButtonPythonWindows64" type="Button" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer2"]
-margin_top = 112.0
+margin_top = 142.0
 margin_right = 384.0
-margin_bottom = 132.0
+margin_bottom = 167.0
 text = "./engine/Windows64/2.79/python/bin/python.exe"
 icon = ExtResource( 2 )
 align = 0
 expand_icon = true
 
 [node name="LabelPythonLinux32" type="Label" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer2"]
+visible = false
 margin_top = 136.0
 margin_right = 384.0
 margin_bottom = 167.0
@@ -779,6 +829,7 @@ Linux 32 bits:"
 align = 1
 
 [node name="ButtonPythonLinux32" type="Button" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer2"]
+visible = false
 margin_top = 171.0
 margin_right = 384.0
 margin_bottom = 191.0
@@ -788,17 +839,17 @@ align = 0
 expand_icon = true
 
 [node name="LabelPythonLinux64" type="Label" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer2"]
-margin_top = 195.0
+margin_top = 171.0
 margin_right = 384.0
-margin_bottom = 226.0
+margin_bottom = 212.0
 text = "
 Linux 64 bits:"
 align = 1
 
 [node name="ButtonPythonLinux64" type="Button" parent="Panel/TabContainer/Paths/HBoxContainer2/VBoxContainer2"]
-margin_top = 230.0
+margin_top = 216.0
 margin_right = 384.0
-margin_bottom = 250.0
+margin_bottom = 241.0
 text = "./engine/Linux64/2.79/python/bin/python3.5m"
 icon = ExtResource( 2 )
 align = 0
@@ -808,6 +859,7 @@ expand_icon = true
 [connection signal="pressed" from="Panel/HBoxContainer/ButtonSave" to="." method="_on_ButtonSave_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/ButtonCloseProject" to="." method="_on_ButtonCloseProject_pressed"]
 [connection signal="pressed" from="Panel/TabContainer/Tasks/VBoxContainer/ButtonBuildData" to="." method="_on_ButtonBuildData_pressed"]
+[connection signal="pressed" from="Panel/TabContainer/Tasks/VBoxContainer/ButtonGetRanGE" to="." method="_on_ButtonGetRanGE_pressed"]
 [connection signal="pressed" from="Panel/TabContainer/Tasks/VBoxContainer/ButtonSetIcons" to="." method="_on_ButtonSetIcons_pressed"]
 [connection signal="value_changed" from="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1/SpinBoxCompressionLevel" to="." method="_on_SpinBoxCompressionLevel_value_changed"]
 [connection signal="value_changed" from="Panel/TabContainer/Project/HBoxContainer/VBoxContainer3/SpinBoxDataChunkSize" to="." method="_on_SpinBoxDataChunkSize_value_changed"]

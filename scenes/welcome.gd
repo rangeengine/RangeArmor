@@ -110,6 +110,9 @@ func _update_runtime_files(data: Dictionary):
 			if "/Launcher" in file:
 				_error = dir.copy(_get_pathfile(dir) + file, cur_dir + "/" + file)
 				print("  > Copied file: ", file)
+			if "/Launcher.exe" in file:
+				_error = dir.copy(_get_pathfile(dir) + file, cur_dir + "/" + file)
+				print("  > Copied file: ", file)
 
 
 func _create_new_project(path: String):

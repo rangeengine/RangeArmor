@@ -216,6 +216,9 @@ func _notification(what):
 # Signal handlers
 func _on_ButtonBuildData_pressed() -> void:
 	_run_script("res://release/scripts/build_data.py", [])
+	
+func _on_ButtonGetRanGE_pressed() -> void:
+	_run_script("res://release/scripts/get_rangeengine_currentplatform.py", [])
 
 
 func _on_ButtonSetIcons_pressed() -> void:
@@ -407,8 +410,8 @@ func _update_task_buttons() -> void:
 	var cur_dir: Directory = Directory.new()
 	var _error = cur_dir.open(globals.current_project_dir)
 	var python_valid = _get_python_current_os() and true
-	var data_file_valid = cur_dir.file_exists(project["DataFile"])
-	
+	var data_file_valid = cur_dir.dir_exists(project["DataSource"])
+
 	var tooltip = "" if python_valid else "Python executable for current platform must be set first."
 	
 	# Set toggle tasks based on existing Python executable
@@ -510,15 +513,24 @@ func _get_item_list(item_list: ItemList) -> PoolStringArray:
 
 func _get_python_current_os() -> String:
 	var cur_dir: Directory = Directory.new()
-	var _error = cur_dir.open(globals.current_project_dir)
+	var range_dir = OS.get_executable_path().get_base_dir().get_base_dir()
+	#print(range_dir + globals.current_project_data["AlternativePython"])
+	var _error = cur_dir.open(range_dir)
 	var cur_os = "Windows" if OS.get_name() == "Windows" else "Linux"
 	var result = ""
+
+	# Range Engine try pick
+	_error = cur_dir.open(range_dir)
+	if (cur_dir.file_exists(range_dir + globals.current_project_data["AlternativePython"])):
+		result = range_dir + globals.current_project_data["AlternativePython"]
 	
-	if cur_dir.file_exists(globals.current_project_data["Python" + cur_os + "32"]):
-		result = globals.current_project_data["Python" + cur_os + "32"]
-		
-	elif cur_dir.file_exists(globals.current_project_data["Python" + cur_os + "64"]):
-		result = globals.current_project_data["Python" + cur_os + "64"]
+	if (result == ""):
+		_error = cur_dir.open(globals.current_project_dir)
+		if cur_dir.file_exists(globals.current_project_data["Python" + cur_os + "32"]):
+			result = globals.current_project_data["Python" + cur_os + "32"]
+			
+		elif cur_dir.file_exists(globals.current_project_data["Python" + cur_os + "64"]):
+			result = globals.current_project_data["Python" + cur_os + "64"]
 		
 	if result:
 		result = result.replace("./", globals.current_project_dir + "/")

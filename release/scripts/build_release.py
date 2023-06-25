@@ -1,7 +1,6 @@
 import common as _common
 from pathlib import Path
 
-
 ARCHIVE_EXT = "zip"
 
 args = _common.getArgs()
@@ -12,7 +11,7 @@ def main():
     # type: () -> None
 
     print("Started game release build")
-
+    
     if data:
         _performRelease()
 
@@ -38,14 +37,11 @@ def _performRelease():
 
     launcherDir = curPath / "launcher"
     engineDir = curPath / "engine"
-    dataFile = curPath / data["DataFile"]  # type: Path
+    gameDataDir = curPath / "data"
+    # dataFile = curPath / data["DataFile"]  # type: Path XXX RANGEARMOR: DEPRECATED XXX
 
     if not releaseDir.exists():
         print("X Release directory do not exist:", releaseDir)
-        return
-
-    elif not dataFile.exists():
-        print("X Data file do not exist:", dataFile)
         return
 
     elif not launcherDir.exists():
@@ -66,7 +62,9 @@ def _performRelease():
             releaseTargetPath = releaseDir / ("-".join([_common.formatFileName(data["GameName"], spaces=False), data["Version"], target]))
             releaseTargetLauncherPath = releaseTargetPath / "launcher"
             releaseTargetEnginePath = releaseTargetPath / "engine"
+            releaseTargetGameDataPath = releaseTargetPath / "data"
 
+            print("STAGE 1: Folders")
             if releaseTargetPath.exists():
                 print("    > Removing existing directory:", releaseTargetPath)
                 shutil.rmtree(releaseTargetPath.as_posix(), True)
@@ -77,9 +75,11 @@ def _performRelease():
                 releaseTargetLauncherPath.mkdir()
                 releaseTargetEnginePath.mkdir()
 
-            print("    > Copying data file to:", releaseTargetPath / dataFile.name)
-            shutil.copy2(dataFile.as_posix(), (releaseTargetPath / dataFile.name).as_posix())
+            print("STAGE 2: Game Data")
+            print("    > Copying all game data file to:", releaseTargetPath)
+            shutil.copytree(gameDataDir.as_posix(), releaseTargetGameDataPath.as_posix())
 
+            print("STAGE 3: Launcher Files")
             print("    > Copying launcher files from:", launcherDir)
             print("        > Copying launcher script to:", releaseTargetLauncherPath / "launcher.py")
             shutil.copy2((launcherDir / "launcher.py").as_posix(), (releaseTargetLauncherPath / "launcher.py").as_posix())
@@ -101,7 +101,8 @@ def _performRelease():
             else:
                 hasErrors = True
                 print("        X Could not find launcher executable for " + target + " on:", launcherDir)
-
+                
+            print("STAGE 4: RanGE Engine")
             print("    > Copying engine files to:", releaseTargetEnginePath / target)
             shutil.copytree((engineDir / target).as_posix(), (releaseTargetEnginePath / target).as_posix())
 

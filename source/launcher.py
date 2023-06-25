@@ -23,23 +23,9 @@ def main():
     import subprocess
 
     if config is not None:
-        dataFile = curPath.parent / config["DataFile"]  # type: Path
+        gameDataFile = curPath.parent / config["DataSource"]  # type: Path
 
-        if dataFile.exists():
-            dataFile = dataFile.resolve()
-            gameDir = getGameDir(config)
-            tempDir = getTempDir(config)
-
-            showConsoleWindow(False)
-            debugMsg("> Extract game data into temp directory...")
-            decompressDataFile(dataFile, tempDir)
-
-            filesLists = getFilesLists(gameDir)
-            persistentFiles = filesLists[0]
-
-            debugMsg("> Copy persistent files from game to temp directory...")
-            copyPersistentFiles(gameDir, tempDir, persistentFiles)
-
+        if gameDataFile.exists():
             enginePath = curPath.parent / config["EnginePath"]  # type: Path
 
             if platform.system() != "Windows":
@@ -48,30 +34,17 @@ def main():
             extraArgs = " " + args.get("-a").strip('"\' ') if args.get("-a") else ""
             console = " -c" if args.get("-c") and not "-c" in extraArgs else ""
             command = PLAT_QUOTE + enginePath.as_posix() + PLAT_QUOTE + console + extraArgs + " " + PLAT_QUOTE + config["MainFile"] + PLAT_QUOTE
-            os.chdir(tempDir.as_posix())
-            debugMsg("> Launch game in blenderplayer")
+            os.chdir(gameDataFile.as_posix())
+            debugMsg("> Launch game in RangePlayer")
             if platform.system() == "Windows": subprocess.call(command, shell=False)
             else: subprocess.call(command, shell=True)
             showConsoleWindow(False)
             sleep(0.2)
 
-            filesLists = getFilesLists(tempDir)
-            persistentFiles = filesLists[0]
-
-            debugMsg("> Copy persistent files from temp to game directory...")
-            copyPersistentFiles(tempDir, gameDir, persistentFiles)
-
-            debugMsg("> Remove all files before finish...")
-            for _file in filesLists[0] + filesLists[1]:
-                _file.unlink()
-
-            removeEmptyDirs(tempDir)
-            os.chdir(tempDir.parent.as_posix())
-            shutil.rmtree(tempDir.as_posix())
             showConsoleWindow(True)
 
         else:
-            print("X Could not find game data at", dataFile.as_posix())
+            print("X Could not find game data at", gameDataFile.as_posix())
 
 
 def debugMsg(*args, waitInput=False):

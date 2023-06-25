@@ -1,6 +1,6 @@
 [package]
 name = "rangearmor"
-version = "0.1.1"
+version = "1.4.0"
 edition = "2018"
 build = "build.rs"
 
@@ -9,6 +9,8 @@ clap = "2.33.3"
 subprocess = "0.2.8"
 json = "0.12.4"
 winapi = {version = "0.3.9", features = ["wincon", "winuser"]}
+winapi-i686-pc-windows-gnu = "0.4.0"
+rustls = "0.21.2"
 
 [build-dependencies]
 winres = "0.1.12"

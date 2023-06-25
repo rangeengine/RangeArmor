@@ -87,7 +87,6 @@ def export(_target):
     targets = {
         "Windows32": "Windows Desktop 32",
         "Windows64": "Windows Desktop 64",
-        "Linux32": "Linux 32",
         "Linux64": "Linux 64",
     }
     

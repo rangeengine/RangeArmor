@@ -11,7 +11,6 @@ const DEFAULT_CONFIG: Dictionary = {
 const DEFAULT_PLATFORMS: PoolStringArray = PoolStringArray([
 	"Windows32",
 	"Windows64",
-	"Linux32",
 	"Linux64",
 ])
 
@@ -55,6 +54,7 @@ const DEFAULT_FIELDS: Dictionary = {
 	"PythonWindows64": "./engine/Windows64/2.79/python/bin/python.exe",
 	"PythonLinux32": "./engine/Linux32/2.79/python/bin/python3.5m",
 	"PythonLinux64": "./engine/Linux64/2.79/python/bin/python3.5m",
+	"AlternativePython": "/2.79/python/bin/python.exe",
 	"Persistent": [
 		"*.bgeconf",
 	],
