@@ -31,6 +31,8 @@ def main():
             if platform.system() != "Windows":
                 os.system("chmod +x " + PLAT_QUOTE + enginePath.as_posix() + PLAT_QUOTE)
 
+            showConsoleWindow(False)
+            
             extraArgs = " " + args.get("-a").strip('"\' ') if args.get("-a") else ""
             console = " -c" if args.get("-c") and not "-c" in extraArgs else ""
             command = PLAT_QUOTE + enginePath.as_posix() + PLAT_QUOTE + console + extraArgs + " " + PLAT_QUOTE + config["MainFile"] + PLAT_QUOTE

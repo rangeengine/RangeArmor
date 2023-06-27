@@ -24,6 +24,7 @@ defaultFiles_Windows = [
 ]
 
 defaultFiles_Linux = [
+"blenderplayer"
 ]
 
 def main():

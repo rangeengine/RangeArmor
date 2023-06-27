@@ -523,6 +523,9 @@ func _get_python_current_os() -> String:
 	_error = cur_dir.open(range_dir)
 	if (cur_dir.file_exists(range_dir + globals.current_project_data["AlternativePython"])):
 		result = range_dir + globals.current_project_data["AlternativePython"]
+	# Linux try
+	if (cur_dir.file_exists(range_dir + globals.current_project_data["AlternativePythonLinux"])):
+		result = range_dir + globals.current_project_data["AlternativePythonLinux"]
 	
 	if (result == ""):
 		_error = cur_dir.open(globals.current_project_dir)

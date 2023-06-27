@@ -18,7 +18,6 @@ const DEFAULT_PROJECT_FOLDERS: PoolStringArray = PoolStringArray([
 	"",
 	"data",
 	"engine",
-	"engine/Linux32",
 	"engine/Linux64",
 	"engine/Windows32",
 	"engine/Windows64",
@@ -53,8 +52,9 @@ const DEFAULT_FIELDS: Dictionary = {
 	"PythonWindows32": "./engine/Windows32/2.79/python/bin/python.exe",
 	"PythonWindows64": "./engine/Windows64/2.79/python/bin/python.exe",
 	"PythonLinux32": "./engine/Linux32/2.79/python/bin/python3.5m",
-	"PythonLinux64": "./engine/Linux64/2.79/python/bin/python3.5m",
+	"PythonLinux64": "./engine/Linux64/2.79/python/bin/python3.10",
 	"AlternativePython": "/2.79/python/bin/python.exe",
+	"AlternativePythonLinux": "/2.79/python/bin/python3.10",
 	"Persistent": [
 		"*.bgeconf",
 	],
