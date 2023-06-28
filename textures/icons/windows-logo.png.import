@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bgarmor_logo_name.png-ab01ecd6283185c94f5f67d7894e4b2b.stex"
+path="res://.import/windows-logo.png-08f1af73e4567ac0690c91fa5b5f6379.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/bgarmor_logo_name.png"
-dest_files=[ "res://.import/bgarmor_logo_name.png-ab01ecd6283185c94f5f67d7894e4b2b.stex" ]
+source_file="res://textures/icons/windows-logo.png"
+dest_files=[ "res://.import/windows-logo.png-08f1af73e4567ac0690c91fa5b5f6379.stex" ]
 
 [params]
 

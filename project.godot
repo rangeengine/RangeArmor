@@ -13,9 +13,27 @@ _global_script_classes=[ {
 "class": "BGArmorGlobals",
 "language": "GDScript",
 "path": "res://scripts/globals.gd"
+}, {
+"base": "Button",
+"class": "EmojiButton",
+"language": "GDScript",
+"path": "res://addons/emojis-for-godot/nodes/EmojiButton.gd"
+}, {
+"base": "TextureRect",
+"class": "EmojiIcon",
+"language": "GDScript",
+"path": "res://addons/emojis-for-godot/nodes/EmojiIcon.gd"
+}, {
+"base": "Object",
+"class": "Emojis",
+"language": "GDScript",
+"path": "res://addons/emojis-for-godot/emojis/emojis.gd"
 } ]
 _global_script_class_icons={
-"BGArmorGlobals": ""
+"BGArmorGlobals": "",
+"EmojiButton": "res://addons/emojis-for-godot/icons/EmojiButton.svg",
+"EmojiIcon": "res://addons/emojis-for-godot/icons/EmojiIcon.svg",
+"Emojis": ""
 }
 
 [application]
@@ -24,7 +42,7 @@ config/name="RANGEARMOR Panel"
 run/main_scene="res://scenes/welcome.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="RangeArmor"
-boot_splash/image="res://textures/bgarmor_logo.png"
+boot_splash/image="res://textures/rangearmor_logo.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
@@ -36,6 +54,10 @@ Globals="*res://scripts/globals.gd"
 
 window/size/width=800
 window/size/height=450
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/emojis-for-godot/plugin.cfg" )
 
 [global]
 

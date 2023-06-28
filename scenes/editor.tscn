@@ -1,8 +1,17 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://roboto_medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://textures/icons/tile176.png" type="Texture" id=2]
 [ext_resource path="res://scenes/editor.gd" type="Script" id=3]
+[ext_resource path="res://addons/emojis-for-godot/emojis/36x36/1f4c4.tres" type="Texture" id=4]
+[ext_resource path="res://addons/emojis-for-godot/nodes/EmojiButton.gd" type="Script" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://textures/icons/windows-logo.png" type="Texture" id=7]
+[ext_resource path="res://textures/icons/linux-logo.png" type="Texture" id=8]
+[ext_resource path="res://textures/icons/windows-and-linux-logo.png" type="Texture" id=9]
+[ext_resource path="res://addons/emojis-for-godot/emojis/36x36/1f4c1.tres" type="Texture" id=10]
+[ext_resource path="res://addons/emojis-for-godot/emojis/36x36/2705.tres" type="Texture" id=11]
+[ext_resource path="res://addons/emojis-for-godot/emojis/36x36/2b05.tres" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=19]
 font_data = ExtResource( 1 )
@@ -135,7 +144,7 @@ anchor_bottom = 1.0
 margin_left = 8.0
 margin_top = 8.0
 margin_right = -8.0
-margin_bottom = -36.0
+margin_bottom = -41.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource( 12 )
@@ -167,47 +176,40 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 
-[node name="ButtonExplore" type="Button" parent="Panel/HBoxContainer"]
-margin_right = 257.0
+[node name="EmojiButtonCloseProject" type="Button" parent="Panel/HBoxContainer"]
+margin_right = 255.0
 margin_bottom = 25.0
-rect_pivot_offset = Vector2( 146, 32.9 )
-hint_tooltip = "Open project directory on default file manager."
-size_flags_horizontal = 3
-size_flags_vertical = 3
+rect_min_size = Vector2( 255, 0 )
 theme = SubResource( 5 )
-custom_fonts/font = SubResource( 2 )
+text = "Close Project"
+icon = ExtResource( 12 )
+expand_icon = true
+script = ExtResource( 5 )
+emoji_name = "arrow_left"
+
+[node name="EmojiButtonExplore" type="Button" parent="Panel/HBoxContainer"]
+margin_left = 259.0
+margin_right = 514.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 255, 0 )
+theme = SubResource( 5 )
 text = "Explore"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+icon = ExtResource( 10 )
+expand_icon = true
+script = ExtResource( 5 )
+emoji_name = "file_folder"
 
-[node name="ButtonSave" type="Button" parent="Panel/HBoxContainer"]
-margin_left = 261.0
-margin_right = 518.0
+[node name="EmojiButtonSave" type="Button" parent="Panel/HBoxContainer"]
+margin_left = 518.0
+margin_right = 773.0
 margin_bottom = 25.0
-rect_pivot_offset = Vector2( 146, 32.9 )
-hint_tooltip = "Save project data."
-size_flags_horizontal = 3
-size_flags_vertical = 3
+rect_min_size = Vector2( 255, 0 )
 theme = SubResource( 5 )
-text = "Save"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ButtonCloseProject" type="Button" parent="Panel/HBoxContainer"]
-margin_left = 522.0
-margin_right = 780.0
-margin_bottom = 25.0
-hint_tooltip = "Close project and go back to welcome screen. This discards unsaved changes."
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = SubResource( 5 )
-custom_fonts/font = SubResource( 2 )
-text = "Close"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "Save project"
+icon = ExtResource( 11 )
+expand_icon = true
+script = ExtResource( 5 )
+emoji_name = "white_check_mark"
 
 [node name="TabContainer" type="TabContainer" parent="Panel"]
 anchor_right = 1.0
@@ -245,14 +247,15 @@ theme = SubResource( 12 )
 custom_fonts/font = SubResource( 2 )
 text = "Build Data"
 
-[node name="ButtonGetRanGE" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer"]
+[node name="EmojiButtonGetRanGE" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer"]
 margin_top = 23.0
 margin_right = 800.0
 margin_bottom = 48.0
-hint_tooltip = "Copy all the necessary data from the game engine (current platform) to the project."
-theme = SubResource( 12 )
-custom_fonts/font = SubResource( 2 )
 text = "Copy Range Engine Files"
+icon = ExtResource( 4 )
+expand_icon = true
+script = ExtResource( 5 )
+emoji_name = "page_facing_up"
 
 [node name="ButtonSetIcons" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer"]
 margin_top = 52.0
@@ -262,6 +265,8 @@ hint_tooltip = "Set icons for engine and launcher executables (only available on
 theme = SubResource( 12 )
 custom_fonts/font = SubResource( 2 )
 text = "Set Icons"
+icon = ExtResource( 6 )
+expand_icon = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/TabContainer/Tasks/VBoxContainer"]
 margin_top = 81.0
@@ -297,6 +302,8 @@ margin_right = 398.0
 margin_bottom = 70.0
 theme = SubResource( 12 )
 text = "Windows 32 bits"
+icon = ExtResource( 7 )
+expand_icon = true
 
 [node name="ButtonRunWindows64" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 74.0
@@ -304,6 +311,8 @@ margin_right = 398.0
 margin_bottom = 99.0
 theme = SubResource( 12 )
 text = "Windows 64 bits"
+icon = ExtResource( 7 )
+expand_icon = true
 
 [node name="ButtonRunLinux32" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
@@ -320,6 +329,8 @@ margin_right = 398.0
 margin_bottom = 128.0
 theme = SubResource( 12 )
 text = "Linux 64 bits"
+icon = ExtResource( 8 )
+expand_icon = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer"]
 margin_left = 402.0
@@ -343,6 +354,8 @@ margin_right = 398.0
 margin_bottom = 70.0
 theme = SubResource( 12 )
 text = "Windows 32 bits"
+icon = ExtResource( 7 )
+expand_icon = true
 
 [node name="ButtonExportWindows64" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 74.0
@@ -350,6 +363,8 @@ margin_right = 398.0
 margin_bottom = 99.0
 theme = SubResource( 12 )
 text = "Windows 64 bits"
+icon = ExtResource( 7 )
+expand_icon = true
 
 [node name="ButtonExportLinux32" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer2"]
 visible = false
@@ -366,6 +381,8 @@ margin_right = 398.0
 margin_bottom = 128.0
 theme = SubResource( 12 )
 text = "Linux 64 bits"
+icon = ExtResource( 8 )
+expand_icon = true
 
 [node name="ButtonExportAll" type="Button" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 132.0
@@ -374,6 +391,8 @@ margin_bottom = 157.0
 hint_tooltip = "Exports to all available platforms."
 theme = SubResource( 12 )
 text = "All Platforms"
+icon = ExtResource( 9 )
+expand_icon = true
 
 [node name="CheckBoxExportCompress" type="CheckBox" parent="Panel/TabContainer/Tasks/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 161.0
@@ -855,11 +874,11 @@ icon = ExtResource( 2 )
 align = 0
 expand_icon = true
 
-[connection signal="pressed" from="Panel/HBoxContainer/ButtonExplore" to="." method="_on_ButtonExplore_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/ButtonSave" to="." method="_on_ButtonSave_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/ButtonCloseProject" to="." method="_on_ButtonCloseProject_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/EmojiButtonCloseProject" to="." method="_on_ButtonCloseProject_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/EmojiButtonExplore" to="." method="_on_ButtonExplore_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/EmojiButtonSave" to="." method="_on_ButtonSave_pressed"]
 [connection signal="pressed" from="Panel/TabContainer/Tasks/VBoxContainer/ButtonBuildData" to="." method="_on_ButtonBuildData_pressed"]
-[connection signal="pressed" from="Panel/TabContainer/Tasks/VBoxContainer/ButtonGetRanGE" to="." method="_on_ButtonGetRanGE_pressed"]
+[connection signal="pressed" from="Panel/TabContainer/Tasks/VBoxContainer/EmojiButtonGetRanGE" to="." method="_on_ButtonGetRanGE_pressed"]
 [connection signal="pressed" from="Panel/TabContainer/Tasks/VBoxContainer/ButtonSetIcons" to="." method="_on_ButtonSetIcons_pressed"]
 [connection signal="value_changed" from="Panel/TabContainer/Project/HBoxContainer/VBoxContainer1/SpinBoxCompressionLevel" to="." method="_on_SpinBoxCompressionLevel_value_changed"]
 [connection signal="value_changed" from="Panel/TabContainer/Project/HBoxContainer/VBoxContainer3/SpinBoxDataChunkSize" to="." method="_on_SpinBoxDataChunkSize_value_changed"]

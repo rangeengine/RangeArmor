@@ -1,8 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/welcome.gd" type="Script" id=1]
-[ext_resource path="res://textures/bgarmor_logo_name.png" type="Texture" id=2]
+[ext_resource path="res://textures/rangearmor_logo_name.png" type="Texture" id=2]
 [ext_resource path="res://roboto_medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://addons/emojis-for-godot/emojis/36x36/2795.tres" type="Texture" id=4]
+[ext_resource path="res://addons/emojis-for-godot/nodes/EmojiButton.gd" type="Script" id=5]
+[ext_resource path="res://addons/emojis-for-godot/emojis/36x36/1f4c2.tres" type="Texture" id=6]
+[ext_resource path="res://addons/emojis-for-godot/emojis/36x36/1f4da.tres" type="Texture" id=7]
+[ext_resource path="res://addons/emojis-for-godot/emojis/36x36/1f4d1.tres" type="Texture" id=8]
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.12549, 0.12549, 0.141176, 1 )
@@ -22,6 +27,9 @@ corner_radius_bottom_right = 30
 [sub_resource type="DynamicFont" id=15]
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=16]
+font_data = ExtResource( 3 )
+
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
 border_width_left = 2
@@ -38,6 +46,7 @@ corner_radius_bottom_right = 10
 bg_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
 
 [sub_resource type="Theme" id=5]
+Button/fonts/font = SubResource( 16 )
 Button/styles/focus = SubResource( 4 )
 Button/styles/hover = SubResource( 6 )
 Button/styles/normal = SubResource( 4 )
@@ -163,34 +172,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonNew" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject"]
+[node name="EmojiButtonNew" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject"]
 margin_right = 200.0
 margin_bottom = 76.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 200, 50 )
-size_flags_horizontal = 3
+rect_min_size = Vector2( 200, 0 )
+rect_pivot_offset = Vector2( -22, 50 )
 theme = SubResource( 5 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 15 )
 text = "New Project"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+icon = ExtResource( 4 )
+script = ExtResource( 5 )
+emoji_name = "heavy_plus_sign"
 
-[node name="ButtonOpen" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject"]
+[node name="EmojiButtonOpen" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject"]
 margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 76.0
-rect_min_size = Vector2( 200, 50 )
-size_flags_horizontal = 3
+rect_min_size = Vector2( 200, 0 )
+rect_pivot_offset = Vector2( -229, 26 )
 theme = SubResource( 5 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 15 )
 text = "Open Project"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+icon = ExtResource( 6 )
+script = ExtResource( 5 )
+emoji_name = "open_file_folder"
 
 [node name="LabelLinks" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 103.0
@@ -214,34 +217,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonDocs" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject"]
+[node name="EmojiButtonDocs" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject"]
 margin_right = 200.0
 margin_bottom = 76.0
-rect_min_size = Vector2( 200, 50 )
-rect_pivot_offset = Vector2( 1078, 306 )
-size_flags_horizontal = 3
+rect_min_size = Vector2( 200, 0 )
+rect_pivot_offset = Vector2( 80, 58 )
 theme = SubResource( 5 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 15 )
-text = "Docs"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "API Documentation"
+icon = ExtResource( 7 )
+script = ExtResource( 5 )
+emoji_name = "books"
 
-[node name="ButtonSource" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject"]
+[node name="EmojiButtonNew2" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject"]
 margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 76.0
-rect_min_size = Vector2( 200, 50 )
-rect_pivot_offset = Vector2( 874, 306 )
-size_flags_horizontal = 3
+rect_min_size = Vector2( 200, 0 )
+rect_pivot_offset = Vector2( 80, 58 )
 theme = SubResource( 5 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 15 )
 text = "Source Code"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+icon = ExtResource( 8 )
+script = ExtResource( 5 )
+emoji_name = "bookmark_tabs"
 
 [node name="VBoxContainerRecent" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
 margin_left = 408.0
@@ -288,8 +285,8 @@ align = 2
 [connection signal="file_selected" from="FileDialogNew" to="." method="_on_FileDialogNew_file_selected"]
 [connection signal="dir_selected" from="FileDialogOpen" to="." method="_on_FileDialogOpen_dir_selected"]
 [connection signal="file_selected" from="FileDialogOpen" to="." method="_on_FileDialogOpen_file_selected"]
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject/ButtonNew" to="." method="_on_ButtonNew_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject/ButtonOpen" to="." method="_on_ButtonOpen_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject/ButtonDocs" to="." method="_on_ButtonDocs_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject/ButtonSource" to="." method="_on_ButtonSource_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject/EmojiButtonNew" to="." method="_on_ButtonNew_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_NewProject/EmojiButtonOpen" to="." method="_on_ButtonOpen_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject/EmojiButtonDocs" to="." method="_on_ButtonDocs_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/Hbox_OpenProject/EmojiButtonNew2" to="." method="_on_ButtonSource_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainerRecent/ButtonClearRecent" to="." method="_on_ButtonClearRecent_pressed"]
