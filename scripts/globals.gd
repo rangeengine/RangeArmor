@@ -3,6 +3,7 @@ extends Node
 
 
 const MAX_RECENT_PROJECTS = 5
+const RANGE_ENGINE_VERSION = "14"
 const DEFAULT_CONFIG: Dictionary = {
 	"LastDir": "",
 	"RecentPaths": [],

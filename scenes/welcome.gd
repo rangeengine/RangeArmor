@@ -48,7 +48,8 @@ func _on_FileDialogOpen_dir_selected(dir: String) -> void:
 
 
 func _on_ButtonDocs_pressed() -> void:
-	var _error = OS.shell_open("https://bgempire.github.io/bgarmor/")
+	var doc = "https://rangeengine.tech/api/" + globals.RANGE_ENGINE_VERSION + "/html/manual/tutorials/range_armor/index.html"
+	var _error = OS.shell_open(doc)
 
 
 func _on_ButtonSource_pressed() -> void:
