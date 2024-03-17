@@ -8,7 +8,7 @@ data = _common.getProjectData()
 
 # RangeEngine Files #
 defaultFiles_Windows = [
-"blenderplayer.exe",
+"RangeRuntime.exe",
 "python3.dll",
 "python310.dll",
 
@@ -24,7 +24,7 @@ defaultFiles_Windows = [
 ]
 
 defaultFiles_Linux = [
-"blenderplayer"
+"RangeRuntime"
 ]
 
 def main():
@@ -102,7 +102,6 @@ def _performRelease():
     engineBundlePythonTargetDir = engineBundleTargetDir / "python"
     shutil.copytree(pythonpath.as_posix(), engineBundlePythonTargetDir.as_posix())
     
-
     print("    > Successful!")
 
 

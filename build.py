@@ -85,7 +85,6 @@ def export(_target):
         (exportPath / ".gdignore").touch()
         
     targets = {
-        "Windows32": "Windows Desktop 32",
         "Windows64": "Windows Desktop 64",
         "Linux64": "Linux 64",
     }
