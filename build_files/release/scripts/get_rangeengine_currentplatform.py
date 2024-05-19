@@ -8,23 +8,22 @@ data = _common.getProjectData()
 
 # RangeEngine Files #
 defaultFiles_Windows = [
-"RangeRuntime.exe",
-"python3.dll",
-"python310.dll",
-
-"avcodec-58.dll",
-"OpenAL32.dll",
-"avdevice-58.dll",
-"avformat-58.dll",
-"avutil-56.dll",
-"swresample-3.dll",
-"swscale-5.dll",
-"ucrtbase.dll",
-"SDL2.dll",
+    "RangeRuntime.exe",
+    "avcodec-58.dll",
+    "avdevice-58.dll",
+    "avformat-58.dll",
+    "avutil-56.dll",
+    "libfftw3-3.dll",
+    "OpenAL32.dll",
+    "python310.dll",
+    "SDL2.dll",
+    "swresample-3.dll",
+    "swscale-5.dll",
+    "tbb.dll"
 ]
 
 defaultFiles_Linux = [
-"RangeRuntime"
+    "RangeRuntime"
 ]
 
 def main():
