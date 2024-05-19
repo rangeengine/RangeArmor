@@ -7,7 +7,7 @@ use subprocess::*;
 
 fn main() {
     let matches = App::new("RangeEngine Launcher")
-        .version("1.4.0")
+        .version("1.5.1")
         .author("Range Engine")
         .about("RangeEngine launcher.")
         .arg(Arg::with_name("console")

@@ -4,22 +4,27 @@ __pycache__
 *$py.class
 *.ini
 
-# Generated files
-/BGArmor Panel*
-.idea
-.vscode
-*.sav
-godot/bin
-/release/tools/Windows/ResourceHacker.ini
-/source/launcher/target
-
-# Godot-specific ignores
-.import/
-
 # Imported translations (automatically generated from CSV files)
 *.translation
 
 # Mono-specific ignores
 .mono/
 data_*/
+
+# Generated files
+.idea
+.vscode
+*.sav
+build_files/release/tools/Windows/ResourceHacker.ini
+
+# build files
+build_files/release/launcher/*
+!build_files/release/launcher/.gitkeep
+
+# Rust
+launcher/rust/target/
+
+# Godot-specific ignores
+.import
+godot/bin
 godot.exe

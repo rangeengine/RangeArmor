@@ -6,13 +6,13 @@ import sys
 from pathlib import Path
 
 pythonExecutable = Path(sys.executable).resolve()
-rootPath = Path(__file__).parent.parent.parent
-launcherPathSource = rootPath / "source/launcher.py"
-launcherPathTarget = rootPath / "release/launcher/launcher.py"
+rootPath = Path(__file__).parents[3]
+launcherPathSource = rootPath / "launcher/python/launcher.py"
+launcherPathTarget = rootPath / "build_files/release/launcher/launcher.py"
 
 # Minify to release directory using pyminifier
 args = [
-    pythonExecutable.as_posix(), "-m", "source.scripts.pyminifier", 
+    pythonExecutable.as_posix(), "-m", "launcher.python.scripts.pyminifier", 
     "-o", launcherPathTarget.as_posix(), 
     "--replacement-length=48", 
     "--obfuscate-classes", 

@@ -28,9 +28,9 @@ def build(target):
     
     toolchain = "i686-pc-windows-gnu" if target == "windows" else "i686-unknown-linux-gnu"
     ext = ".exe" if target == "windows" else ""
-    launcherSourcePath = (curDir / "source/launcher").absolute()
-    sourceExe = (curDir / "source/launcher/target/{toolchain}/release/rangearmor{ext}".format(toolchain=toolchain, ext=ext)).absolute()
-    targetExe = (curDir / ("release/launcher/Launcher" + ext)).absolute()
+    launcherSourcePath = (curDir / "launcher/rust").absolute()
+    sourceExe = (curDir / "launcher/rust/target/{toolchain}/release/rangearmor{ext}".format(toolchain=toolchain, ext=ext)).absolute()
+    targetExe = (curDir / ("build_files/release/launcher/Launcher" + ext)).absolute()
     
     print("> Started build for target:", toolchain)
     
@@ -58,14 +58,14 @@ def build(target):
 def minify():
     # type: () -> None
     
-    script = curDir / "source/scripts/minify_launcher.py"
+    script = curDir / "launcher/python/scripts/minify_launcher.py"
     subprocess.call([pythonExecutable.as_posix(), script.as_posix()])
 
 
 def clean():
     # type: () -> None
     
-    directory = curDir / "source/launcher/target"
+    directory = curDir / "launcher/rust/target"
     
     if directory.exists():
         print("> Deleting directory:", directory.as_posix())
@@ -106,10 +106,10 @@ def export(_target):
             subprocess.call(args)
             
             print("  > Copying release files to:", targetPath.as_posix())
-            shutil.copytree((curDir / "release").as_posix(), (targetPath / "release").as_posix())
+            shutil.copytree((curDir / "build_files/release").as_posix(), (targetPath / "release").as_posix())
             
             print("  > Deleting ignored files from:", targetPath.as_posix())
-            ignoredPatterns = [".gitignore", "__pycache__"]
+            ignoredPatterns = [".gitignore", ".gitkeep", "__pycache__"]
             
             for pattern in ignoredPatterns:
                 for folder, subfolders, files in os.walk(targetPath.as_posix()):
