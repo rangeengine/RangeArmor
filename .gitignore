@@ -26,5 +26,4 @@ launcher/rust/target/
 
 # Godot-specific ignores
 .import
-godot/bin
 godot.exe

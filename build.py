@@ -77,7 +77,7 @@ def export(_target):
     minify()
     
     projectFile = (curDir / "godot/project.godot").absolute()
-    exportPath = (curDir / "godot/bin").absolute()
+    exportPath = (curDir.parent / "RangeArmor_Build").absolute()
     
     if not exportPath.exists():
         exportPath.mkdir()
