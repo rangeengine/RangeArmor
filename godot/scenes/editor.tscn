@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://roboto_medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/roboto_medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://textures/icons/tile176.png" type="Texture" id=2]
 [ext_resource path="res://scenes/editor.gd" type="Script" id=3]
 [ext_resource path="res://addons/emojis-for-godot/emojis/36x36/1f4c4.tres" type="Texture" id=4]

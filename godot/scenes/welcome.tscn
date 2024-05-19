@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/welcome.gd" type="Script" id=1]
 [ext_resource path="res://textures/rangearmor_logo_name.png" type="Texture" id=2]
-[ext_resource path="res://roboto_medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/roboto_medium.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://addons/emojis-for-godot/emojis/36x36/2795.tres" type="Texture" id=4]
 [ext_resource path="res://addons/emojis-for-godot/nodes/EmojiButton.gd" type="Script" id=5]
 [ext_resource path="res://addons/emojis-for-godot/emojis/36x36/1f4c2.tres" type="Texture" id=6]

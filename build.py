@@ -77,8 +77,8 @@ def export(_target):
     
     minify()
     
-    projectFile = (curDir / "project.godot").absolute()
-    exportPath = (curDir / "bin").absolute()
+    projectFile = (curDir / "godot/project.godot").absolute()
+    exportPath = (curDir / "godot/bin").absolute()
     
     if not exportPath.exists():
         exportPath.mkdir()

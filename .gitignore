@@ -9,7 +9,7 @@ __pycache__
 .idea
 .vscode
 *.sav
-/bin
+godot/bin
 /release/tools/Windows/ResourceHacker.ini
 /source/launcher/target
 
