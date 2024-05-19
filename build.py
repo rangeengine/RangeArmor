@@ -46,12 +46,11 @@ def build(target):
     
     print("> Copying executable to:", targetExe.as_posix())
     shutil.copy2(sourceExe.as_posix(), targetExe.as_posix())
+
+    args = ["upx", "-9", targetExe.as_posix()]
+    print("> Running UPX on executable:", " ".join(args))
+    subprocess.call(args)
     
-    if target != "windows":
-        args = ["upx", "-5", targetExe.as_posix()]
-        print("> Running upx on executable:", " ".join(args))
-        subprocess.call(args)
-        
     print("> Done!")
 
 
