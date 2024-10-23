@@ -1,4 +1,7 @@
-![BGArmor](https://cdn.discordapp.com/attachments/745764475080147044/1123261610186768505/rangearmor_extendedlogo.png)
+<img src="/textures/rangearmor_logo_name.png" alt="RangeArmor" />
+
+## Note
+**This tool is currently being discontinued in modern versions of the Range Engine (2.0+), in order to remove the dependency on godot as an interface renderer and improve integration with the game engine.**
 
 ## [Read the manual](https://rangeengine.tech/api/14/html/manual/tutorials/range_armor/index.html)
 
