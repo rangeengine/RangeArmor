@@ -1,7 +1,8 @@
 <img src="/textures/rangearmor_logo_name.png" alt="RangeArmor" />
 
 ## Note
-**This tool is currently being discontinued in modern versions of the Range Engine (2.0+), in order to remove the dependency on godot as an interface renderer and improve integration with the game engine.**
+**This tool is currently discontinued in modern versions of the Range Engine (2.0+).
+It has been deprecated starting from Range Engine 1.6 rev3, in order to remove the dependency on Godot as the interface renderer and to improve overall integration with the engine.**
 
 ## [Read the manual](https://rangeengine.tech/api/14/html/manual/tutorials/range_armor/index.html)
 
